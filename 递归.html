@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const arr = [
+            {
+                id: '1',
+                title: '标题',
+                child: [
+                    {
+                        id: '11',
+                        title: '标题1',
+                        child: [
+                            {
+                                id: '111',
+                                title: '标题11',
+                                child: []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: '2',
+                title: '标题',
+                child: [
+                    {
+                        id: '22',
+                        title: '标题1',
+                        child: [
+                            {
+                                id: '222',
+                                title: '标题11',
+                                child: []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                id: '3',
+                title: '标题3',
+                child: []
+            }
+        ]
+
+        function hehe (arr) {
+            return JSON.stringify(arr).replace(/id/g,'label').replace(/title/g,'value').replace(/child/g, 'children').replace(/"children"\:\[\]/g, 'ccc')
+
+        }
+        function hehe2 (arr) {
+            return JSON.parse(JSON.stringify(arr).replace(/id/g,'label').replace(/title/g,'value').replace(/child/g, 'children'))
+
+        }
+        // console.log(hehe(arr), 123)
+        // console.log(hehe2(arr))
+
+        function hehe3 (arr) { 
+            arr.forEach(item => {
+                // if (item.child.length === 0) {
+                //     delete item.child
+                // } else {
+                //     item.child = hehe3(item.child)
+                // }
+                item.child.length === 0 ? delete item.child : item.child = hehe3(item.child)
+
+            })
+            return arr
+
+        }
+
+        // console.log(hehe3(arr))
+
+        function hehe4 (arr) {
+            return arr.filter(item => {
+                if (item.child.length > 0) {
+                    
+                    item.child = hehe4(item.child)
+                    console.log(item.child)
+                }
+                return item.child.length > 0
+            })
+        }
+        console.log(hehe4(arr))
+    </script>
+    
+</body>
+</html>
