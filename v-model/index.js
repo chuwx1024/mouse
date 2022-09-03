@@ -33,4 +33,3 @@ function Observer (data_instance) {
 
    })
 }
-console.log('0000')
