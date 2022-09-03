@@ -1,4 +1,7 @@
 
 class Vue {
-    
+    constructor () {
+        
+    }
+
 }
