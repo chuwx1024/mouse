@@ -12,6 +12,7 @@
         <input type="text" v-model="name">
         <span>更多: {{ more.like }}</span>
         <input type="text" v-model="more.like">
+        <span>年龄: {{ age }}</span>
     </div>
     <script src="./index.js"></script>
     <script>
@@ -19,6 +20,7 @@
             el: '#app',
             data: {
                 name: '小花',
+                age: 3,
                 more: {
                     like: '百步传扬'
                 }
