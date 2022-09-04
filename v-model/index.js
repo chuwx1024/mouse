@@ -51,15 +51,17 @@ function Compile (element, vm) {
 
     fragment_compile (fragment, vm) // 解析模板文本
 
-    vm.$el.appendChild(fragment)
-
-
+    vm.$el.appendChild(fragment) // 解析完模板  把代码片段挂载到dom上
 
 }
 
+
+// 差值表达式解析
 function fragment_compile (node, vm) {
     const pattern = /\{\{\s*(\S+)\s*\}\}/
 
+
+    // nodeType === 3 文本节点  包含换行符 ,空白符
     if (node.nodeType === 3) { 
         const result_regex = pattern.exec(node.nodeValue)
         if (result_regex) {
@@ -67,8 +69,8 @@ function fragment_compile (node, vm) {
             const value = arr.reduce((total, current) => {
                 return total[current]
             }, vm.$data)
-            node.nodeValue = node.nodeValue.replace(pattern, value)
-            console.log(node.nodeValue)
+
+            node.nodeValue = node.nodeValue.replace(pattern, value) // 差值表达式替换成文本
         }
         return 
     }
@@ -77,5 +79,18 @@ function fragment_compile (node, vm) {
 
 }
 
-888888888888888888888888888888
-99755555555555
+
+
+// 收集 和通知订阅者
+class Dependency  {
+    constructor () {
+        this.subscribers = []
+    }
+    addSub () {
+        this.subscribers.push(sub)
+    }
+    notify () {
+        this.subscribers.forEach(item => sub.update())
+    }
+
+}
