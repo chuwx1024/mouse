@@ -76,3 +76,5 @@ function fragment_compile (node, vm) {
     node.childNodes.forEach(item => { fragment_compile(item, vm) })
 
 }
+
+888888888888
