@@ -101,6 +101,35 @@
                 type: 'value'
             },
 
+            // 数据多加滚动条
+            dataZoom: [
+                {
+                type: 'slider',
+                realtime: true,
+                start: 0,
+                end: 40,  // 初始展示40%
+                height: 4,
+                fillerColor: "rgba(17, 100, 210, 0.42)", // 滚动条颜色
+                borderColor: "rgba(17, 100, 210, 0.12)", 
+                handleSize:0, // 两边手柄尺寸
+                showDetail: false, // 拖拽时是否展示滚动条两侧的文字
+                top:'96%',
+                
+                // zoomLock:true, // 是否只平移不缩放
+                // moveOnMouseMove:true, //鼠标移动能触发数据窗口平移
+                // zoomOnMouseWheel :true, //鼠标移动能触发数据窗口缩放
+            },
+            { 
+                type: "inside",  // 支持内部鼠标滚动平移
+                start: 0,
+                end: 40,
+                zoomOnMouseWheel: false,  // 关闭滚轮缩放
+                moveOnMouseWheel: true, // 开启滚轮平移
+                moveOnMouseMove: true  // 鼠标移动能触发数据窗口平移 
+            }
+
+            ],
+
             
             series: [
                 {
@@ -117,7 +146,7 @@
                     name: '图例3',
                     data: [120, 200, 150, 80, 70, 110, 130,120, 200, 150, 80, 70, 110, 130,120, 200, 150, 80, 70, 110, 130],
                     type: 'bar'
-                },
+                }
             ]
             };
 
