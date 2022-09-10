@@ -63,10 +63,29 @@
 
             // legend  图例
             legend: {
-                data: ['图例1', '图例2', '图例3'],
-                type: 'plain', // plain 普通图例  scroll 可滚动翻页的图例
-                show: true
-
+                // data: ['图例1', '图例2', '图例3'],
+                data: (function () {
+                    var arr = ['图例1', '图例2', '图例3']
+                    return arr
+                })(),
+                type: 'scroll', // plain 普通图例  scroll 可滚动翻页的图例
+                show: true,
+                left: 'right', // 值可变动
+                top: 'bottom',
+                right: 'auto',
+                bottom: 'auto',
+                width: '160px',
+                height: '100px',
+                orient: 'horizontal',
+                align: 'right', // 文字颜色位置
+                padding: 5,
+                itemGap: 5,
+                itemHeight: 12, // 颜色高度
+                itemStyle: {
+                    // color: ''
+                    borderColor: 'orange',
+                    borderWidth: 2
+                }
 
             },
 
