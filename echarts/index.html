@@ -9,7 +9,7 @@
 </head>
 <style>
     #main {
-        background-color: plum;
+        /* background-color: plum; */
     }
 </style>
 <body>
@@ -19,7 +19,10 @@
         var main = document.getElementById('main')
 
         var mychart = echarts.init(main)
+        const list = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 
+        const startValue = list.length - 6
+        const endValue = list.length -1
         option = {
             // 标题属性
             title: {
@@ -105,24 +108,38 @@
             dataZoom: [
                 {
                 type: 'slider',
-                realtime: true,
+                // realtime: true,
                 start: 0,
                 end: 40,  // 初始展示40%
                 height: 4,
-                fillerColor: "rgba(17, 100, 210, 0.42)", // 滚动条颜色
-                borderColor: "rgba(17, 100, 210, 0.12)", 
+                // startValue: startValue,
+                // endValue: endValue,
+                // 滚动条
+                fillerColor: "rgba(50, 194, 6, 0.4)", // 滚动条颜色
+                borderColor: "rgba(21, 165, 227, 1)", 
                 handleSize:0, // 两边手柄尺寸
                 showDetail: false, // 拖拽时是否展示滚动条两侧的文字
-                top:'96%',
+                // top:'96%',
+                handleIcon: 'none',
+                moveHandleStyle: {
+                    color: 'red',
+                    opacity: 0
+                },
+
                 
-                // zoomLock:true, // 是否只平移不缩放
-                // moveOnMouseMove:true, //鼠标移动能触发数据窗口平移
-                // zoomOnMouseWheel :true, //鼠标移动能触发数据窗口缩放
+                zoomLock:true, // 是否只平移不缩放
+                moveOnMouseMove:true, //鼠标移动能触发数据窗口平移
+                zoomOnMouseWheel :true, //鼠标移动能触发数据窗口缩放
             },
             { 
                 type: "inside",  // 支持内部鼠标滚动平移
+                disabled: false, // 是否禁用
+                filterMode: 'empty',
                 start: 0,
-                end: 40,
+                end: 30,
+                // minSpan: 2,
+                // maxSpan: 90,
+                zoomLock: false,
                 zoomOnMouseWheel: false,  // 关闭滚轮缩放
                 moveOnMouseWheel: true, // 开启滚轮平移
                 moveOnMouseMove: true  // 鼠标移动能触发数据窗口平移 
