@@ -15,9 +15,10 @@ class Vue {
 function Observer (data_instance) {
 
     if (!data_instance || typeof data_instance !== 'object') return 
-    const dependency = new Dependency()
+    const dependency = new Dependency() // 案例位置
 
    Object.keys(data_instance).forEach(item => {
+
     let value = data_instance[item]
     Observer(value)
 
@@ -25,8 +26,8 @@ function Observer (data_instance) {
         enumerable: true, 
         configurable: true,
         get () {
-            // console.log(value,'get111')
-            console.log(Dependency.temp, 'temp')
+
+            // console.log(Dependency.temp, 'temp')
             Dependency.temp && dependency.addSub(Dependency.temp)
             return value
         },
@@ -55,7 +56,7 @@ function Compile (element, vm) {
         fragment.append(child)
     }
 
-    fragment_compile (fragment, vm) // 解析模板文本
+    fragment_compile (fragment, vm) // 解析模板文本 (xuniDOM)
 
     vm.$el.appendChild(fragment) // 解析完模板  把代码片段挂载到dom上
 
@@ -77,8 +78,6 @@ function fragment_compile (node, vm) {
 
         if (result_regex) {
 
-            
-
             const arr = result_regex[1].split('.') // name  more.like
             const value = arr.reduce((total, current) => {
                 return total[current]
@@ -86,7 +85,6 @@ function fragment_compile (node, vm) {
 
             node.nodeValue = xxx.replace(pattern, value) // 差值表达式替换成文本
 
-            // console.log('9999999999999999999')
 
             // 创建订阅者
             new Watcher(vm, result_regex[1], newVal => {
@@ -95,6 +93,34 @@ function fragment_compile (node, vm) {
 
         }
         return 
+    }
+
+    // console.log(node.attributes, node)
+    // 添加v-model订阅
+    if (node.nodeType === 1 && node.nodeName === 'INPUT') {
+        const attr = Array.from(node.attributes)
+        console.log(attr, 777)
+        attr.forEach(item => {
+            if (item.nodeName === 'v-model') {
+                const value = item.nodeValue.split('.').reduce((total,current) => total[current], vm.$data)
+                node.value = value
+
+                // v-model 创建订阅者
+                new Watcher(vm, item.nodeValue, newVal => {
+                    node.value = newVal
+                } )
+
+                node.addEventListener('input', e => {
+                    const arr1 = item.nodeValue.split('.')
+                    const arr2 = arr1.slice(0, arr1.length - 1)
+                    const final = arr2.reduce((total, i) => total[i], vm.$data)
+
+                    final[arr1[arr1.length - 1]] = e.target.value
+
+                })
+
+            }
+        })
     }
 
     node.childNodes.forEach(item => { fragment_compile(item, vm) })
@@ -128,16 +154,18 @@ class Watcher {
         this.key = key
         this.callback = callback
 
-        Dependency.temp = this // ?  临时属性 触发get
+        Dependency.temp = this
 
         key.split('.').reduce((total, item) => total[item], vm.$data) // 触发get 添加订阅者
+
         Dependency.temp = null
 
     }
 
     // 订阅者更新dom
     update () {
-        const value= this.key.split('.').reduce((total, item) => total[item], this.vm.$data)
+        const value = this.key.split('.').reduce((total, item) => total[item], this.vm.$data)
+        console.log(value, '99999')
         this.callback(value)
     }
 }

@@ -13,6 +13,9 @@
         <span>更多: {{ more.like }}</span>
         <input type="text" v-model="more.like">
         <span>年龄: {{ age }}</span>
+        <input type="text" v-model="age">
+        <span>爱好: {{more.dance}}</span>
+        <input type="text" v-model="more.dance">
     </div>
     <script src="./index.js"></script>
     <script>
@@ -22,7 +25,8 @@
                 name: '小花',
                 age: 3,
                 more: {
-                    like: '百步传扬'
+                    like: '百步传扬',
+                    dance: '跳舞'
                 }
             }
         })
