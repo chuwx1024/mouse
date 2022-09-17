@@ -1,5 +1,6 @@
 <script setup>
 import { ref , reactive, onMounted, watch, computed } from 'vue'
+import FirstComponent from './firstComponent.vue'
 // ref定义简单数据
 
 let a = ref('张三')
@@ -47,9 +48,12 @@ const d = computed(() => {
         {{ c }}
         {{ d }}
 
+        <first-component></first-component>
+
     </div>
 </template>
 
-<style scoped lang="less">
+<style scoped >
+
 
 </style>

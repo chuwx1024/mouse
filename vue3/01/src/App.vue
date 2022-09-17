@@ -2,6 +2,7 @@
 
 import HelloWorld from './components/HelloWorld.vue'
 import NewHello from './components/newHello.vue'
+
 </script>
 
 <template>
@@ -9,6 +10,7 @@ import NewHello from './components/newHello.vue'
     <new-hello></new-hello>
     <div class="line"></div>
     <HelloWorld msg="Vite + Vue" />
+    <div class="line"></div>
   </div>
   
 </template>
