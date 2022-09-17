@@ -6,28 +6,28 @@ export default {
     }
   },
   beforeCreate () {
-    console.log('beforeCreate')
+    console.log('beforeCreate---0')
   },
   created () {
-    console.log('created')
+    console.log('created--0')
   },
   beforeMount () {
-    console.log('beforeMount')
+    console.log('beforeMount---0')
   },
   mounted () {
-    console.log('mounted')
+    console.log('mounted----0')
   },
   beforeUpdate () {
-    console.log('beforeUpdate')
+    console.log('beforeUpdate----0')
   },
   updated () {
-    console.log('updated')
+    console.log('updated----0')
   },
   beforeUnmount () {
-    console.log('beforeUnmount')
+    console.log('beforeUnmount----0')
   },
   unmounted () {
-    console.log('unmounted')
+    console.log('unmounted-------0')
   },
   methods: {
     countNum () {

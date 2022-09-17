@@ -1,5 +1,5 @@
 <script setup>
-import { ref , reactive } from 'vue'
+import { ref , reactive, onMounted } from 'vue'
 // ref定义简单数据
 
 let a = ref('张三')
@@ -13,6 +13,10 @@ let b = reactive([{id: 1, name: '翠花'}, {id: 2, name: '王五'}])
 function changeData () {
     b[1].name = '王五的老铺'
 }
+
+onMounted(() => {
+    console.log('onMounted---1')
+})
 
 </script>
 
