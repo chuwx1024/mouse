@@ -6,10 +6,10 @@
         </div>
         <div class="body">
             <slot></slot>
-            <input type="text" placeholder="请输入天气">
+            <input v-model="modelValue" type="text" placeholder="请输入天气">
         </div>
         <div class="btns">
-            <button>确认</button>
+            <button @click="submit">确认</button>
             <button  @click="cancel">取消</button>
         </div>
     </div>
@@ -24,6 +24,10 @@ export default {
             type: String,
             default: '',
             title: '子组件标题'
+        },
+        modelValue: {
+            type: String,
+            default: ''
         }
 
     },
@@ -40,7 +44,10 @@ export default {
   },
   methods: {
     cancel () {
-        this.$emit('close')
+        this.$emit('close', {name: '翠花', id: 1})
+    },
+    submit () {
+        this.$emit('update:model-value', this.modelValue)
     }
 
   }

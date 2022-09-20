@@ -49,7 +49,8 @@ export default {
       this.msg++
 
     },
-    close () {
+    close (val) {
+      console.log(val, 'val')
       this.showDialog = !this.showDialog
     }
    
@@ -64,7 +65,7 @@ export default {
   <button @click="countNum">点击</button>
   <button @click="close">dialog 展示</button>
 
-  <SonSon  title="标题" v-if="showDialog"  @close="close">
+  <SonSon v-model="weather" title="标题" v-if="showDialog"  @close="close">
     <template #title="titleParams">
       <span>{{ titleParams.hello }} {{ titleParams.title }}</span>
     </template>  
