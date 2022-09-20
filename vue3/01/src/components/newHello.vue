@@ -34,6 +34,9 @@ const d = computed(() => {
     return a.value
 })
 
+// dialog 控制
+let showDialog = ref(false)
+
 </script>
 
 <template>
@@ -47,8 +50,10 @@ const d = computed(() => {
         <h6>计算属性</h6>
         {{ c }}
         {{ d }}
+        <h6>展示dialog</h6>
+        <button @click="showDialog = !showDialog">dialog显示隐藏</button>
 
-        <first-component></first-component>
+        <!-- <first-component v-if="showDialog" :title="测试标题"></first-component> -->
 
     </div>
 </template>

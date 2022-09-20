@@ -1,9 +1,24 @@
 <script >
+import SonSon from './sonson.vue'
 export default {
+
+  props: {
+    title: {
+      type: String,
+      default: ''
+    }
+  },
   data () {
     return {
-      msg: 10
+      msg: 10,
+      weather: '请转多云',
+      title: '这是标题',
+      showDialog: false
+      
     }
+  },
+  components: {
+    SonSon
   },
   beforeCreate () {
     console.log('beforeCreate---0')
@@ -33,6 +48,9 @@ export default {
     countNum () {
       this.msg++
 
+    },
+    close () {
+      this.showDialog = !this.showDialog
     }
    
   }
@@ -44,6 +62,14 @@ export default {
 <div class="box">
   <h1>{{ msg }}</h1>
   <button @click="countNum">点击</button>
+  <button @click="close">dialog 展示</button>
+
+  <SonSon  title="标题" v-if="showDialog"  @close="close">
+    <template #title="titleParams">
+      <span>{{ titleParams.hello }} {{ titleParams.title }}</span>
+    </template>  
+    今天的天气是<span style="color: red">{{ weather }}</span>
+  </SonSon>
 </div>
   
 </template>
