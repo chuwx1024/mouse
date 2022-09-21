@@ -1,17 +1,33 @@
 <script setup>
+import { useRouter, useRoute} from 'vue-router'
 
 import HelloWorld from './components/HelloWorld.vue'
 import NewHello from './components/newHello.vue'
+
+const router = useRouter()
+const route = useRoute()
+
+function testClick () {
+    router.push({
+        name: 'testDemo',
+        query: {
+            name: '8888',
+            age: '88898997666'
+        }
+    })
+}
+
+
 
 </script>
 
 <template>
   <div>
-    <button>路由跳转</button>
+    <button @click="testClick">路由跳转</button>
     <div class="line"></div>
     <new-hello></new-hello>
     <div class="line"></div>
-    <HelloWorld msg="Vite + Vue" />
+    <HelloWorld  />
     <div class="line"></div>
   </div>
   

@@ -3,11 +3,15 @@ import './style.css'
 import App from './App.vue'
 
 // 引入路由
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 
 let routes = [
     {path: '/', component: () => import('./Father.vue')},
-    { path: '/test', component: () => import('./routeDemo/index.vue')}
+    { 
+        path: '/test', 
+        name: 'testDemo',
+        component: () => import('./routeDemo/index.vue')
+    }
 ]
 
 const router = createRouter({

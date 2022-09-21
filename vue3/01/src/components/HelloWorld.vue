@@ -2,12 +2,12 @@
 import SonSon from './sonson.vue'
 export default {
 
-  props: {
-    title: {
-      type: String,
-      default: ''
-    }
-  },
+  // props: {
+  //   title: {
+  //     type: String,
+  //     default: ''
+  //   }
+  // },
   data () {
     return {
       msg: 10,
@@ -64,6 +64,7 @@ export default {
   <h1>{{ msg }}</h1>
   <button @click="countNum">点击</button>
   <button @click="close">dialog 展示</button>
+  {{ title }}
 
   <SonSon v-model="weather" title="标题" v-if="showDialog"  @close="close">
     <template #title="titleParams">
