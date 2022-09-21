@@ -7,6 +7,8 @@ import NewHello from './components/newHello.vue'
 
 <template>
   <div>
+    <button>路由跳转</button>
+    <div class="line"></div>
     <new-hello></new-hello>
     <div class="line"></div>
     <HelloWorld msg="Vite + Vue" />
@@ -20,6 +22,7 @@ import NewHello from './components/newHello.vue'
   height: 1px;
   width: 100%;
   background: red;
+  margin: 10px 0;
 }
 
 </style>
