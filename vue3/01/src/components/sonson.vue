@@ -6,7 +6,7 @@
         </div>
         <div class="body">
             <slot></slot>
-            <input v-model="modelValue" type="text" placeholder="请输入天气">
+            <input v-model="modelValue" type="text" placeholder="请输入天气" @keydown.enter="submit" @keydown.esc="cancel">
         </div>
         <div class="btns">
             <button @click="submit">确认</button>
@@ -41,6 +41,12 @@ export default {
   },
   mounted () {
 
+  },
+  beforeUnmount () {
+    console.log('组件销毁之前')
+  },
+  unmounted () {
+    console.log('组件销毁')
   },
   methods: {
     cancel () {

@@ -37,6 +37,11 @@ const d = computed(() => {
 // dialog 控制
 let showDialog = ref(false)
 
+let weather = ref('晴转多云')
+function dialog () {
+    showDialog.value = !showDialog.value
+}
+
 </script>
 
 <template>
@@ -51,9 +56,17 @@ let showDialog = ref(false)
         {{ c }}
         {{ d }}
         <h6>展示dialog</h6>
-        <button @click="showDialog = !showDialog">dialog显示隐藏</button>
+        <button @click="dialog">dialog显示隐藏</button>
 
-        <!-- <first-component v-if="showDialog" :title="测试标题"></first-component> -->
+
+
+
+        <first-component v-if="showDialog" v-model="weather" title="测试标题啊" @close='dialog'>
+            <template #title>
+                <span>测试标题啊123</span>
+            </template>
+            今天的天气是:
+        </first-component>
 
     </div>
 </template>
