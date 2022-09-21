@@ -6,7 +6,12 @@ import App from './App.vue'
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 
 let routes = [
-    {path: '/', component: () => import('./Father.vue')},
+    {path: '/', redirect: '/home'},
+    {
+        path: '/home',
+        name: 'HomePage',
+        component: () => import('./Father.vue')
+    },
     { 
         path: '/test', 
         name: 'testDemo',
