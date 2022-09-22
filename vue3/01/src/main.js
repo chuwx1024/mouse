@@ -16,6 +16,23 @@ let routes = [
         path: '/test', 
         name: 'testDemo',
         component: () => import('./routeDemo/index.vue')
+    },
+    {
+        path: '/main',
+        name: 'mainPage',
+        component: () => import('./routeDemo/index.vue'),
+        children: [
+            {
+                path: '/main/page1',
+                name: 'main/page1',
+                component: () => import('./routeDemo/page1.vue')
+            },
+            {
+                path: '/main/page2',
+                name: 'main/page2',
+                component: () => import('./routeDemo/page2.vue')
+            }
+        ]
     }
 ]
 
