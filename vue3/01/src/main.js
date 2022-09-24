@@ -5,6 +5,9 @@ import App from './App.vue'
 // 引入路由
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 
+// 引入pinia
+
+
 let routes = [
     {path: '/', redirect: '/home'},
     {
