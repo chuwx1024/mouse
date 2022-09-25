@@ -6,9 +6,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    .box {
+        padding: 10px 10px;
+        border: 1px solid orange;
+        /* height: 100px;
+        width: 100px; */
+        height: 300px;
+        width: 500px;
+        overflow: hidden;
+        
+    }
+    .main {
+        display: block;
+        animation: move3 5s linear infinite;
+    }
+    @keyframes move3 {
+        form {
+            /* background-color: red; */
+            transform: translateY(0);
+        }
+        to {
+            /* background-color: orange; */
+            transform: translateY(-252px);
+        }
+    }
+
+</style>
 <body>
 
     <h3>动画</h3>
     1233
+    <div class="box">
+        <div class="main"></div>
+    </div>
+
+    <script>
+        const list = [
+            { name: '张三', age: '1', work: '院长'},
+            { name: '张三', age: '2', work: '院长'},
+            { name: '张三', age: '3', work: '院长'},
+            { name: '张三', age: '4', work: '院长'},
+            { name: '张三', age: '5', work: '院长'},
+            { name: '张三', age: '6', work: '院长'},
+            { name: '张三', age: '7', work: '院长'},
+            { name: '张三', age: '8', work: '院长'},
+            { name: '张三', age: '9', work: '院长'},
+            { name: '张三', age: '10', work: '院长'},
+            { name: '张三', age: '11', work: '院长'},
+            { name: '张三', age: '12', work: '院长'},
+            { name: '张三', age: '1', work: '院长'},
+            { name: '张三', age: '2', work: '院长'},
+            { name: '张三', age: '3', work: '院长'},
+            { name: '张三', age: '4', work: '院长'},
+            { name: '张三', age: '5', work: '院长'},
+            { name: '张三', age: '6', work: '院长'},
+            { name: '张三', age: '7', work: '院长'},
+            { name: '张三', age: '8', work: '院长'},
+            { name: '张三', age: '9', work: '院长'},
+            { name: '张三', age: '10', work: '院长'},
+            { name: '张三', age: '11', work: '院长'},
+            { name: '张三', age: '12', work: '院长'},
+            { name: '张三', age: '1', work: '院长'},
+            { name: '张三', age: '2', work: '院长'},
+            { name: '张三', age: '3', work: '院长'},
+            
+         
+        ]
+        var str1 = ''
+
+        list.forEach((item,index) => {
+            str1 += `姓名${item.name} - 年龄${item.age} - 工作${item.work}<br>`
+        })
+
+        // document.querySelector('.main').innerHTML = str1
+        const arr = document.querySelectorAll('.main')
+        arr.forEach(item => item.innerHTML = str1)
+
+
+    </script>
+
 </body>
 </html>
