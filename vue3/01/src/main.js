@@ -6,6 +6,7 @@ import App from './App.vue'
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 
 // 引入pinia
+import  { createPinia } from 'pinia'
 
 
 let routes = [
@@ -48,4 +49,6 @@ const router = createRouter({
 // createApp(App).mount('#app')
 let app = createApp(App)
 app.use(router)
+// 注册使用pinia
+app.use(createPinia())
 app.mount('#app')
