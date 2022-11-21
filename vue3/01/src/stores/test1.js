@@ -5,6 +5,9 @@ import { storeToRefs } from 'pinia'
 export const testStore = defineStore('test', {
     // state 相当于data数据
     state: () => {
+        return {
+            
+        }
 
     },
 
