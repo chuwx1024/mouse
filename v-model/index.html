@@ -8,9 +8,29 @@
 </head>
 <body>
     <div id="app">
-        <span>hehe</span>
+        <span>姓名: {{ name }}</span>
+        <input type="text" v-model="name">
+        <span>更多: {{ more.like }}</span>
+        <input type="text" v-model="more.like">
+        <span>年龄: {{ age }}</span>
+        <input type="text" v-model="age">
+        <span>爱好: {{more.dance}}</span>
+        <input type="text" v-model="more.dance">
     </div>
     <script src="./index.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                name: '小花',
+                age: 3,
+                more: {
+                    like: '百步传扬',
+                    dance: '跳舞'
+                }
+            }
+        })
+    </script>
     
 </body>
 </html>
