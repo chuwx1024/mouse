@@ -29,6 +29,8 @@ function testClick () {
     <div class="line"></div>
     <HelloWorld  />
     <div class="line"></div>
+    <div class="btn"></div>
+
   </div>
   
 </template>
