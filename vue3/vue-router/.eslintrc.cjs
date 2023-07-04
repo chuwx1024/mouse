@@ -4,12 +4,11 @@ module.exports = {
   'extends': [
     'plugin:vue/vue3-essential',
     'eslint:recommended'
-    
   ],
   parserOptions: {
     ecmaVersion: 'latest'
   },
   rules: {
-    // 'vue/no-multiple-template-root': "off"
+    'vue/multi-word-component-names': 0
   }
 }
