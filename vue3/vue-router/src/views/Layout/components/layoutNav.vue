@@ -40,6 +40,8 @@ const router = useRouter()
 
 
 const quitHandler = () => {
+    console.log('退出登录了')
+    useStore.clearUserInfo()
     router.push({
         path: '/login'
     })

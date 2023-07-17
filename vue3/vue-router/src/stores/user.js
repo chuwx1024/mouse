@@ -9,6 +9,7 @@ export const useUserStore = defineStore('user', () => {
     const router = useRouter()
     const userInfo = ref({})
 
+    // 登录信息持久化
     const getUserInfo = async ({ account, password}) => {
         const { code, result} = await loginAPI({ account, password})
         if (code === '1') {
@@ -22,10 +23,16 @@ export const useUserStore = defineStore('user', () => {
         
     }
 
+    // 退出清除用户信息 
+    const clearUserInfo = () => {
+        userInfo.value = {}
+    }
+
     
     return {
         userInfo,
-        getUserInfo
+        getUserInfo,
+        clearUserInfo
     }
 
 
