@@ -1,10 +1,9 @@
 <script setup>
-import {loginAPI} from '@/apis/banner.js'
 import { ref } from 'vue'
-import { ElMessage } from 'element-plus'
+
 import 'element-plus/theme-chalk/el-message.css'
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import { useUserStore } from '@/stores/user'
+const userStore = useUserStore()
 
 const userInfo = ref({
    account: 'xiaotuxian001',
@@ -35,12 +34,13 @@ const submitForm = () => {
 
    formRef.value.validate(async valid => {
       if (valid) {
-         const { code} = await loginAPI({account, password})
-         if (code === '1') {
-            console.log('0000')
-            ElMessage({ type: 'success', message: '登录成功' })
-            router.push({ path: '/'})
-         } 
+        //  const { code} = await loginAPI({account, password})
+        userStore.getUserInfo({account, password})
+        //  if (code === '1') {
+        //     console.log('0000')
+        //     ElMessage({ type: 'success', message: '登录成功' })
+        //     router.push({ path: '/'})
+        //  } 
          
 
 
