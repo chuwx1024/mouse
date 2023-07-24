@@ -2,6 +2,8 @@ import axios from "axios";
 import 'element-plus/theme-chalk/el-message.css'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from "@/stores/user";
+import router from '@/router'
+
 
 
 
@@ -21,9 +23,17 @@ httpInstance.interceptors.request.use( config => {
 }, err => Promise.reject(err))
 
 httpInstance.interceptors.response.use( res => res.data, err => {
+    const useStore = useUserStore()
 
     if (err.code === 'ERR_BAD_REQUEST') {
         ElMessage({ type: 'error', message: err.message })
+    }
+
+    if ( err.response && err.response.status === 401) {
+        useStore.clearUserInfo()
+        router.push({
+            path: '/login'
+        })
     }
     return Promise.reject(err)
 })

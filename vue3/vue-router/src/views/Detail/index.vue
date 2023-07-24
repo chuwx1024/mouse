@@ -63,6 +63,8 @@
                 </dl>
               </div>
 
+              <!-- 数据 -->
+              <el-input-number v-model="count" :min="1" :max="10" @change="countChange" />
               <div class="btn" size="large">
                 <el-button plain>加入购物车</el-button>
               </div>
@@ -125,6 +127,13 @@ const getDetailList = computed(() => {
 const getDetailPicture = computed(() => {
   return  (goods.value.details && goods.value.details.pictures) || []
 })
+
+// 数量
+const count = ref(0)
+const countChange = () => {
+  
+}
+
 
 
 

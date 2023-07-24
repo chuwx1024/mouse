@@ -35,6 +35,10 @@ const router = createRouter({
       path: '/login',
       name: 'LoginPage',
       component: () => import('@/views/Login/index.vue')
+    },
+    {
+      path: '/test',
+      component: () => import('@/components/Sku.vue')
     }
   ],
   scrollBehavior () {
