@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        class EventEmitter {
+            constructor () {
+                this.subs = Object.create(null)
+            }
+
+            // 注册事件(订阅消息)
+            $on (eventType, handler) {
+                this.subs[eventType] = this.subs[eventType] || []
+                this.subs[eventType].push(handler)
+
+            }
+
+            // 发布
+            $emit(eventType) {
+                if (this.subs[eventType]) {
+                    this.subs[eventType].forEach(handler => {
+                        handler()
+                    })
+                }
+
+            }
+        }
+
+        const event = new EventEmitter()
+        event.$on('click', () => {
+            console.log('333')
+        })
+        event.$on('click', () => {
+            console.log('444')
+        })
+
+        event.$emit('click')
+
+
+
+
+    </script>
+    
+</body>
+</html>
