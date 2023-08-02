@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+
+        var obj = {
+            name: '344'
+        }
+
+        function render (obj, key, val) {
+            // Object.defineProperty(obj, key, {
+            // enumerable: true,
+            // configurable: true,
+            // get () {
+            //     console.log('get')
+            //     return val
+            // },
+            // set (newVal) {
+            //     console.log('set')
+            //     val = newVal
+            // }
+        // })
+
+        val = 'new788999'
+
+
+        }
+
+        
+
+       render(obj, 'name', obj['name'])
+       console.log(obj)
+       console.log(obj.name)
+       obj.name = 'new'
+       console.log(obj.name)
+
+       var a = {
+        age: 0
+       }
+
+       function hehe (age){
+            age = '0000'
+            console.log(age)
+
+       }
+
+       hehe(a.age)
+       console.log(a)
+
+
+
+    </script>
+    
+</body>
+</html>
