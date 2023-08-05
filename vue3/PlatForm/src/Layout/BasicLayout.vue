@@ -2,5 +2,5 @@
 </script>
 
 <template>
-  登录页面
+  主页面
 </template>
