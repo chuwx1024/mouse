@@ -1,5 +1,6 @@
 import 'normalize.css/normalize.css'
 import '@/assets/styles/index.less'
+import "ant-design-vue/dist/antd.css"
 
 
 import { createApp } from 'vue'
