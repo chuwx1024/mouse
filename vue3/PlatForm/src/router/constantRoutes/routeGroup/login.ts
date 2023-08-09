@@ -3,10 +3,10 @@ export default [
         path: '/login',
         name: 'Login',
         hidden: true,
-        component: () => import('@/LoginLayout/index.vue'),
+        component: () => import('@/Layout/LoginLayout/index.vue'),
         children: [
             {
-                path: 'login',
+                path: '/login',
                 name: 'Login', 
                 meta: {
                     title: 'Dataset'

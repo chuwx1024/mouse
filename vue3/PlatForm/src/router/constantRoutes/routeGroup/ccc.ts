@@ -1,14 +1,14 @@
 export default [
     {
         path: '/mainCCC',
-        name: 'Main',
+        name: 'CCC',
         component: () => import('@/Layout/BasicLayout.vue'),
         meta: {
             title: 'C页面'
         },
         children: [
             {
-                path: '/mainCCC/ccc',
+                path: '/mainCCC',
                 name: 'CCC',
                 component: () => import('@/views/ccc/index.vue'),
             }

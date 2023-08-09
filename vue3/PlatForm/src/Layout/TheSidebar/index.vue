@@ -1,22 +1,20 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
 import { PieChartOutlined, QqOutlined, AppstoreOutlined } from '@ant-design/icons-vue';
 import { ref, reactive } from 'vue'
 import { useCounterStore } from '@/stores/counter';
 const useRoutes = useCounterStore()
-console.log(useRoutes.sidebarData, 'routes')
+
+// 创建路由
+const router = useRouter()
+
 
 const openKeys = ref<string[]>(['1'])
 const selectedKeys = ref<string[]>(['sub1'])
 
 const handleClick = function(obj:any) {
-  console.log(obj, '0000000000000000')
-
+  router.push(obj.key)
 }
-
-const titleClick = function (obj:any) {
-  console.log(obj, 'titleClick')
-}
-
 
 </script>
 
@@ -42,7 +40,7 @@ const titleClick = function (obj:any) {
                 <template #title>{{ item.meta.title }}</template>
                 <template v-for="i in item.children" :key="i.name">
                   <span>
-                    <a-menu-item :key="i.name">
+                    <a-menu-item :key="i.path">
                                 {{ i.meta.title }}
                   </a-menu-item>
                   </span>
@@ -58,19 +56,6 @@ const titleClick = function (obj:any) {
             </span>
             
           </template>
-            
-          <!-- <a-sub-menu key="sub1">
-            <template #title>
-              <span>
-                <user-outlined />
-                subnav 1
-              </span>
-            </template>
-            <a-menu-item key="1">option1</a-menu-item>
-            <a-menu-item key="2">option2</a-menu-item>
-            <a-menu-item key="3">option3</a-menu-item>
-            <a-menu-item key="4">option4</a-menu-item> -->
-          <!-- </a-sub-menu> -->
         </a-menu>
   </a-layout-sider>
 </template>
