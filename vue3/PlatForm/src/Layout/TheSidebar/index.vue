@@ -22,23 +22,6 @@ const titleClick = function (obj:any) {
 
 <template>
   <a-layout-sider>
-
-    <!-- <a-menu
-      style="width: 200px"
-      v-model:openKeys="openKeys"
-      v-model:selectedKeys="selectedKeys"
-      mode="inline"
-      @click="handleClick"
-    >
-
-      <template v-for="item in useRoutes.sidebarData" >
-        <a-menu-item :key="item.path">
-          <pie-chart-outlined />
-          <span>Option 1</span>
-        </a-menu-item>
-      </template> -->
-
-    
     <a-menu
           :style="{ height: '100%', borderRight: 0 }"
           style="width: 200px"
@@ -47,7 +30,35 @@ const titleClick = function (obj:any) {
           mode="inline"
           @click="handleClick"
         >
-            <a-menu-item v-for="item in useRoutes.sidebarData" :key="item.path">{{ item.path }}</a-menu-item>
+          <template v-for="(item,index) in useRoutes.sidebarData" :key="index">
+
+            <span v-if="item.children.length === 1">
+              <a-menu-item :key="item.path">{{ item.meta.title }}</a-menu-item>
+            </span>
+            <span v-else>
+
+              <a-sub-menu :key="item.path">
+  
+                <template #title>{{ item.meta.title }}</template>
+                <template v-for="i in item.children" :key="i.name">
+                  <span>
+                    <a-menu-item :key="i.name">
+                                {{ i.meta.title }}
+                  </a-menu-item>
+                  </span>
+                    <!-- <template v-if="!item.children">
+                        <RouterLink :to="item.path">
+                            <a-menu-item :key="item.key">
+                                {{ item.meta.title }}
+                            </a-menu-item>
+                        </RouterLink>
+                    </template> -->
+                </template>
+            </a-sub-menu>
+            </span>
+            
+          </template>
+            
           <!-- <a-sub-menu key="sub1">
             <template #title>
               <span>

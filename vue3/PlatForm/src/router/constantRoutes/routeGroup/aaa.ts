@@ -4,7 +4,7 @@ export default [
         name: 'Main',
         component: () => import('@/Layout/BasicLayout.vue'),
         meta: {
-            title: 'aaa'
+            title: 'A页面'
         },
         children: [
             {
