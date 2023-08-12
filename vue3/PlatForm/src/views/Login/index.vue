@@ -48,12 +48,8 @@
 </template>
 <script setup lang="ts">
 
-interface FormState {
-  username: string,
-  password: string,
-  login_method: string
-}
 
+import { type FormState } from '@/api/types/login.ts'
 import { ref, reactive, computed } from 'vue'
 
 
