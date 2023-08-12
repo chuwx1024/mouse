@@ -19,6 +19,7 @@
             :model="formState"
             :rules="rules"
             layout="vertical"
+            @finish="onFinish"
           >
             <a-form-item  label="用户名" name="username">
               <a-input v-model:value="formState.username"  />
@@ -50,9 +51,11 @@
 
 
 import { type FormState } from '@/api/types/login.ts'
-import { ref, reactive, computed } from 'vue'
+import { ref, reactive, computed, getCurrentInstance } from 'vue'
+import { login } from '@/api/login.ts'
 
 
+const { appContext : { config: { globalProperties } } } = getCurrentInstance()
 
 const formState = reactive<FormState>({
   username: '',
@@ -71,9 +74,16 @@ const disabled = computed(() => {
   return !(formState.username && formState.password)
 })
 
-// const submitForm = function () {
-//     console.log('提交')
-// }
+
+
+const onFinish = async (values:FormState) => {
+  const res = await login(values)
+  if(res.data.code === 200) {
+    globalProperties.$message.success(res.data.msg)
+  }
+  console.log(res)
+
+}
 
 // 提交成功
 const handleFinish = () => {
