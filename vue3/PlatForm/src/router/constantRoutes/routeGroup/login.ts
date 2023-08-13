@@ -1,7 +1,7 @@
 export default [
     {
         path: '/login',
-        name: 'Login',
+        name: 'LoginLayout',
         hidden: true,
         component: () => import('@/Layout/LoginLayout/index.vue'),
         children: [

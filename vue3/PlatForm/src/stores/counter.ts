@@ -35,4 +35,6 @@ export const useCounterStore = defineStore('router', () => {
 
 
 
-}, { persist: true})
+},{
+  persist: true
+})

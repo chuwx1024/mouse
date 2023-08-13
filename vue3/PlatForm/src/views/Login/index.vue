@@ -53,7 +53,10 @@
 import { type FormState } from '@/api/types/login.ts'
 import { ref, reactive, computed, getCurrentInstance } from 'vue'
 import { login } from '@/api/login.ts'
+import { setToken } from '@/utils/handleCookie.ts'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 
 const { appContext : { config: { globalProperties } } } = getCurrentInstance()
 
@@ -79,7 +82,10 @@ const disabled = computed(() => {
 const onFinish = async (values:FormState) => {
   const res = await login(values)
   if(res.data.code === 200) {
+    setToken(res.data.cookie)
     globalProperties.$message.success(res.data.msg)
+
+    router.push('/mainAAA')
   }
   console.log(res)
 

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getToken } from "@/utils/handleCookie.ts";
 
 
 const service = axios.create({
@@ -7,6 +8,10 @@ const service = axios.create({
 })
 
 service.interceptors.request.use(config => {
+
+    // 给接口统一添加token
+    config.headers['Token'] = getToken() || ''
+    
     
 
     return config
