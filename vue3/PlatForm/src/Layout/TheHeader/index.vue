@@ -41,9 +41,17 @@ import Setting from './rightNav/Setting.vue'
     padding: 0 12px;
     display: flex;
     flex-direction: row;
-    padding: 10px 0;
     justify-content: center;
     align-items: center;
+    /deep/ .ant-btn {
+      height: 78%;
+      background: unset;
+      border: unset;
+      color: #fff;
+      &:hover {
+        background: rgba(255, 255, 255, .2);
+      }
+    }
   }
 
 }
