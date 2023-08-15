@@ -1,9 +1,5 @@
 <template>
   <a-tabs type="card" v-model:activeKey="activeKey">
-    <!-- <a-tab-pane key="1" tab="账户信息">账户信息</a-tab-pane>
-    <a-tab-pane key="2" tab="租用信息">Content of Tab Pane 2</a-tab-pane>
-    <a-tab-pane key="3" tab="卡券管理">Content of Tab Pane 3</a-tab-pane>
-    <a-tab-pane key="4" tab="充值记录">Content of Tab Pane 3</a-tab-pane> -->
     <a-tab-pane v-for="item in tabData" :key="item.id" :tab="item.tab">
       <component :is="item.component"></component>
     </a-tab-pane>
