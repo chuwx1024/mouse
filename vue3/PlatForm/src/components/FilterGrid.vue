@@ -5,7 +5,7 @@
 
     </div>
     <div class="wrap-right">
-        <name name="btn"></name>
+        <slot name="btn"></slot>
     </div>
   </div>
   <slot></slot>

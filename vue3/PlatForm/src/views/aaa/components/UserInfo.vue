@@ -1,7 +1,7 @@
 <template>
   <FilterGrid>
     <template v-slot:title>
-      账户信息
+      <h3 class="title">账户信息</h3>
     </template>
 
     <a-descriptions style="padding: 20px 2%">
@@ -13,7 +13,7 @@
       <a-descriptions-item label="会员等级">
         <span>黄金会员</span>
 
-        <a-popover title="Title">
+        <a-popover placement="top">
           <template #content>
             <h3>黄金会员</h3>
                             <p style=" padding-bottom: 20px; font-size: 12px;">
@@ -36,7 +36,6 @@
     </a-descriptions>
   </FilterGrid>
 
-
 </template>
 
 <script lang="ts" setup>
@@ -45,8 +44,11 @@ import FilterGrid from '@/components/FilterGrid.vue'
 </script>
 
 <style scoped lang="less">
-/deep/ .wrap-left {
+.title{
   font-size: 20px;
+  margin: 0;
 }
-
+:deep(.ant-steps-item-icon) {
+  transform: translateY(12px);
+}
 </style>
